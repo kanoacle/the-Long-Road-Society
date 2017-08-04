@@ -1,0 +1,938 @@
+/*.logo, .white-logo, .name, .band p, .artist-link {
+    visibility:hidden;   only for demo testing
+}
+*/
+
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+
+
+@font-face {
+    font-family: 'Museo500-Regular';
+    src: url('../fonts/Museo500-Regular-webfont.woff2') format('woff2'),
+         url('..fonts/Museo500-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Museo700-Regular';
+    src: url('Museo700-Regular-webfont.woff2') format('woff2'),
+         url('Museo700-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+  /*background: url('../img/artist-background.jpg');*/
+  background-size:100% 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Satyr Reg", serif;
+    font-style: Normal;
+    font-weight: Normal;
+    font-size: 21px;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    background: url('../img/artist-background.jpg');
+    background-size: 100% 100%;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Custom styles
+   ========================================================================== */
+
+.wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /*min-height: 700px;*/
+    max-width: 1600px;
+    overflow: hidden;
+    background: url(../img/sky.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+.night-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /*min-height: 700px;*/
+    max-width: 1600px;
+    overflow: hidden;
+    background: url(../img/nightsky.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+nav {
+    position: relative;
+    text-align: center;
+}
+.logo {
+    position: relative;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    display: block;
+    margin: 0;
+    max-width: 600px;
+    padding: 20px;
+    width: 100%;
+}
+.white-logo {
+    display: none;
+    width: 80%;
+    margin: 20px auto;
+}
+
+
+.subscribe {
+    /*-webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;*/
+    filter: drop-shadow(0 0 9px #fff);
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+.subscribe img {
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+}
+.subscribe:hover img {
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    filter: drop-shadow(0 0 9px #edd75a);
+}
+
+.pyramid {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    position: absolute;
+    left: -50px;
+    min-width: 480px;
+    max-width: 720px;
+    bottom: 120px;
+}
+.pyramid img.map {
+    filter: drop-shadow(0 0 5px #222);
+}
+
+img[usemap] {
+    border: none;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+}
+
+area {
+    cursor: pointer;
+}
+
+area:focus {
+    outline: none;
+}
+
+.scene,
+.layer {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.scene {
+    overflow: auto;
+    position: absolute !important;
+    top: 0;
+}
+
+ul#moon {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    overflow: visible;
+    top: 2%;
+    right: 6%;
+}
+
+.moon {
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    background-image: url(../img/moon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    height: 100px;
+    width: 100px;
+}
+.moon:hover {
+  background-image: url(../img/moon-rollover.png);
+}
+.moon a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    display: block
+}
+@-webkit-keyframes move-moon {
+   0% {
+        -webkit-transform: translateZ(0) translateX(0%) translateY(0%) translate3d(0, 0, 0);
+   }
+   20% {
+        -webkit-transform: translateZ(0) translateX(5%) translateY(-5%) translate3d(0, 0, 0);
+   }
+   40% {
+        -webkit-transform: translateZ(0) translateX(0%) translateY(-4%) translate3d(0, 0, 0);
+   }
+   60% {
+        -webkit-transform: translateZ(0) translateX(5%) translateY(0%) translate3d(0, 0, 0);
+    }
+    80% {
+        -webkit-transform: translateZ(0) translateX(-2%) translateY(-5%) translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translateZ(0) translateX(0%) translateY(0%) translate3d(0, 0, 0);
+   }
+}
+.moon {
+    -webkit-transition: 1s all linear;
+    transition: 1s all linear;
+    -webkit-animation-name: move-moon;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-transform: translateZ(0);
+}
+
+.subscribe {
+  position: relative;
+  left: -5px;
+}
+
+
+.ground {
+    -webkit-transition: all 0s;
+    transition: all 0s;
+    background-image: url(../img/ground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 22% -110px;
+    position: absolute;
+    top: 0%;
+    bottom: -160px;
+    left: -8%;
+    right: -8%;
+    pointer-events: none;
+}
+
+@-webkit-keyframes move-sky {
+   0% {
+        -webkit-transform:
+            translateY(0%) translateZ(0) scale3d(1, 1, 6) translateX(5%) scale(1.1) skewY(0deg) translate3d(0, 0, 0);
+        opacity: 0;
+   }
+   30% {
+        -webkit-transform:
+            translateY(-5%) translateZ(0) scale3d(2, 2, 0) translateX(0%) scale(1.2) skewY(-5deg) translate3d(0, 0, 0);
+        opacity: 0.5;
+    }
+   60% {
+        -webkit-transform:
+            translateY(-10%) translateZ(0) scale3d(3, 3, 6) translateX(-5%) scale(1.3) skewY(-10deg) translate3d(0, 0, 0);
+        opacity: 0.4;
+    }
+    90% {
+        -webkit-transform:
+            translateY(-20%) translateZ(0) scale3d(4, 4, 0) translateX(-10%) scale(1.4) skewY(-15deg) translate3d(0, 0, 0);
+        opacity: 0.0;
+   }
+    100% {
+        -webkit-transform:
+            translateY(-10%) translateZ(0) scale3d(5, 5, 6) translateX(-60%) scale(1.5) skewY(-20deg) translate3d(0, 0, 0);
+        opacity: 0.01;
+   }
+}
+
+.sky {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/sky.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    -webkit-animation: move-sky 20s linear infinite;
+}
+.nightsky {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/nightclouds.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    -webkit-animation: move-sky 20s linear infinite;
+}
+
+.band {
+    display: none;
+    position: absolute;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    width: 98%;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 4px black;
+    max-width: 640px;
+}
+.band .name {
+    font-family: "Satyr Reg", serif;
+    font-style: Normal;
+    font-weight: Normal;
+    font-size: 36px;
+    line-height: 1.1em;
+    margin: 0 auto 10px;
+    /*height: 25px;*/
+    max-width: 540px;
+}
+.band .desc {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 0;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto 20px;
+    color: black;
+}
+.band .artist-link {
+  position: relative;
+  top: -50px;
+  letter-spacing:0.07em;
+}
+.band .back {
+  position: relative;
+  top: -50px;
+}
+.band a {
+    text-decoration: none;
+    color: #D9D9D9;
+    padding-bottom: 4px;
+}
+.band a:hover {
+    border-bottom: 2px solid #D9D9D9;
+}
+
+a.back {
+    border-bottom: 2px solid #D9D9D9;
+}
+
+.band p {
+    padding-left:35px;
+    padding-right:35px;
+    color: #D9D9D9;
+}
+
+/* artist logo placement and sizing */
+
+#label-logo {
+  transform: scale(0.5);
+  opacity: 0.25;
+  filter: invert(100%);
+  position: relative;
+  bottom: 175px;
+}
+#bones-logo {
+  transform: scale(0.35);
+  opacity: 0.35;
+  filter: invert(100%);
+  position: relative;
+  bottom: 250px;
+}
+#desiree-logo {
+  transform: scale(0.5);
+  opacity: 0.35;
+  filter: invert(100%);
+  position: relative;
+  bottom: 150px;
+}
+#moses-logo {
+  transform: scale(0.5);
+  opacity: 0.25;
+  filter: invert(100%);
+  position: relative;
+  bottom: 175px;
+}
+#aviva-logo {
+  transform: scale(0.35);
+  opacity: 0.3;
+  filter: invert(100%);
+  position: relative;
+  bottom: 225px;
+  left: 25px;
+}
+#sitka-logo {
+  transform: scale(0.25);
+  opacity: 0.35;
+  filter: invert(100%);
+  position: relative;
+  bottom: 375px;
+}
+#lovewells-logo {
+
+  transform: scale(0.75);
+  opacity: 0.25;
+  filter: invert(100%);
+  position: relative;
+  bottom: 150px;
+}
+
+/* Z-INDEX */
+
+.logo,
+.white-logo {
+    z-index: 999;
+}
+.band, .bands {
+    z-index: 888;
+}
+.pyramid {
+    z-index: 777;
+}
+.wrapper {
+    z-index: 333;
+}
+.js-ground {
+    z-index: 444;
+}
+.back {
+  z-index: 99;
+}
+.back-about {
+  z-index: 99;
+}
+.moon {
+  z-index: 99;
+}
+
+
+
+/* ==========================================================================
+    Media Queries
+   ========================================================================== */
+
+
+@media only screen and (min-width: 560px) {
+    .moon {
+        display: block;
+        top: 8%;
+        right: 4%;
+        height: 160px;
+        width: 160px;
+    }
+    .pyramid {
+        left: 0;
+        bottom: 16%;
+
+    }
+    .ground {
+        background-image: url(../img/ground.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0 -80px;
+    }
+    .band .name {
+        height: 75px;
+        font-size: 36px;
+        line-height: 110px;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .ground {
+        background-position: 0 -120px;
+    }
+}
+
+@media only screen and (min-height: 461px)  and (max-height: 560px) {
+    .pyramid {
+        bottom: -1%;
+        max-width: 100%;
+        width: 100%;
+        min-width: 400px;
+        left: -39px;
+        right: -10px;
+    }
+    .logo {
+        width: 240px;
+    }
+    .subscribe {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-height: 561px) and (max-width: 720px) {
+    .pyramid {
+        position: absolute;
+        bottom: 130px;
+        top: initial;
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+        padding: 0;
+        left: 0;
+    }
+}
+
+@media only screen and (max-height: 459px) and (max-height: 4590px) {
+    .logo {
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .moon {
+        top: 8%;
+        right: 8%;
+        height: 160px;
+        width: 160px;
+    }
+    .pyramid {
+        top: initial;
+        left: 0%;
+    }
+    .ground {
+        background-image: url(../img/ground.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 32% -90px;
+    }
+    .pyramid div {
+        cursor:pointer;
+    }
+   .band-hover-1 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 99px;
+        left: 300px;
+        height: 100px;
+        width: 109px;
+        background-size: contain;
+    }
+   .band-hover-1:hover {
+        background-image: url(../img/band-hover-1.png);
+    }
+    .band-hover-2 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 190px;
+        left: 226.5px;
+        height: 87.5px;
+        width: 87.5px;
+        background-size: contain;
+    }
+    .band-hover-2:hover {
+        background-image: url(../img/band-hover-2.png);
+    }
+    .band-hover-3 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 193px;
+        left: 390px;
+        height: 93px;
+        width: 93px;
+        background-size: contain;
+    }
+    .band-hover-3:hover {
+        background-image: url(../img/band-hover-3.png);
+    }
+    .band-hover-4 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 297.5px;
+        left: 129px;
+        height: 67.5px;
+        width: 67.5px;
+        background-size: contain;
+    }
+    .band-hover-4:hover {
+        background-image: url(../img/band-hover-4.png);
+    }
+    .band-hover-5 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 289px;
+        left: 252.5px;
+        height: 90px;
+        width: 90px;
+        background-size: contain;
+    }
+    .band-hover-5:hover {
+        background-image: url(../img/band-hover-5.png);
+    }
+    .band-hover-6 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 282px;
+        left: 401px;
+        height: 90px;
+        width: 50px;
+        background-size: contain;
+    }
+    .band-hover-6:hover {
+        background-image: url(../img/band-hover-6.png);
+    }
+    .band-hover-7 {
+        z-index: 999999;
+        background-repeat: no-repeat;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 297px;
+        left: 524px;
+        height: 67px;
+        width: 67px;
+        background-size: contain;
+    }
+    .band-hover-7:hover {
+        background-image: url(../img/band-hover-7.png);
+    }
+}
+
+@media only screen and (max-width: 959px) and (min-height: 561px) and (min-width: 721px) {
+        .pyramid {
+            top: 20%;
+        }
+}
+@media only screen and (min-height: 561px) and (min-width: 960px) {
+    .pyramid {
+        top: 100px;
+        left: 4%;
+    }
+    .ground {
+        top: -180px;
+    }
+}
+
+@media only screen and (max-height: 560px) and (orientation: landscape) {
+    .moon {
+        height: 80px;
+        width: 80px;
+    }
+    .pyramid {
+        left: 140px;
+        bottom: -26px;
+        max-width: 320px;
+    }
+    [class*=" band-hover-"]:after {
+        display: none;
+    }
+}
+
+/*@media only screen
+    and (min-width: 320px)
+    and (max-width: 559px)
+    and (orientation: landscape) {
+    .pyramid {
+        bottom: 0;
+        width: 74%;
+        left: 0;
+    }
+    .moon {
+        height: 100px;
+        width: 100px;
+    }
+    .subscribe {
+        width: 160px;
+    }
+    .logo {
+        width: 320px;
+    }
+}*/
+
+@media only screen and (max-width: 480px) and (max-height: 320px) {
+    .subscribe {
+        width: 80px;
+    }
+    .pyramid {
+        bottom: -2%;
+    }
+    .logo {
+        width: 280px;
+    }
+}
+@media only screen and (max-width: 480px) and (max-height: 320px) and (orientation:landscape) {
+    .pyramid {
+        left: 160px;
+        bottom: -55px !important;
+        min-width: 280px !important;
+        max-width:280px !important;
+    }
+}
+
+@media only screen and (max-width: 320px) and (max-height: 480px) and (orientation:portrait) {
+    .pyramid {
+        left: 0px !important;
+        bottom: 100px;
+        min-width: 320px;
+    }
+}
+
+@media only screen and (max-width: 568px) and (max-height: 320px) {
+    .white-logo {
+      margin: 50px auto 0;
+    }
+    .pyramid {
+        left: 120px;
+        bottom: 20px;
+        min-width: 400px;
+    }
+}
+@media only screen and (max-width: 667px) and (max-height: 375px) {
+    .pyramid {
+        left: 120px;
+        bottom: 20px;
+        max-width: 400px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .pyramid {
+        left: 10%;
+        bottom: 0%;
+        top: 220px;
+    }
+    .band .name {
+        margin-top:30px;
+    }
+}
+
+@media screen and (device-width: 640px) and (device-height: 360px) and (orientation: landscape) {
+.pyramid {
+    bottom:-24%;
+    left:20%;
+}
+}
+
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 3) {
+.pyramid {
+    bottom:-24%;
+    left:20%;
+}
+}
+
+
+@media only screen and (device-width: 1280px) and (device-height: 720px) and (orientation: landscape) {
+    .pyramid {
+        bottom:-19%;
+    }
+}
+
+@media only screen and (device-width: 1920px) and (device-height: 1080px) and (orientation: landscape) {
+    .pyramid {
+        bottom:-19% !important;
+    }
+}
+
+@media only screen and (device-width: 2560px) and (device-height: 1440px) and (orientation: landscape) {
+    .pyramid {
+        bottom:-19% !important;
+    }
+}
+
+@media only screen  and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+   .pyramid {
+    bottom:-24% !important;
+   }
+}
+
+@media screen and (device-width: 854px) and (device-height: 480px)  {
+.pyramid {
+bottom:-40% !important;
+}
+}
+
+@media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+    .logo {
+        margin-top:40px !important;
+    }
+    .pyramid {
+        bottom:-8% !important;
+        left:160px;
+        max-width:340px;
+    }
+}
+
+@media only screen and (device-width: 1280px) and (device-height: 720px) {
+    .pyramid {
+        bottom:-35% !important;
+    }
+}
+
+@media only screen and (device-width: 1280px) and (device-height: 768px) {
+    .pyramid {
+        bottom:-19% !important;
+    }
+}
+
+@media only screen and (device-width: 1080px) and (device-height: 1920px) {
+    .pyramid {
+        bottom:-19% !important;
+    }
+}
+
+@media only screen and (max-width: 540px) and (orientation : landscape) {
+    .pyramid {
+        bottom:-17% !important;
+        max-width:270px !important;
+        min-width:270px !important;
+    }
+}
+
+
+
+
+/* JS STYLES */
+
+.js-bands {
+    max-height: 1600px;
+    background-image: url(../img/artist-background.jpg);
+}
+
+.js-ground {
+    display: none;
+    background-image: url(../img/artist-background.jpg);
+    pointer-events: all;
+    animation-name: waves;
+    animation-duration: 9s;
+    animation-iteration-count: 100;
+    animation-timing-function: linear;
+}
+@keyframes waves {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    25% { opacity: 0.7; }
+    75% { opacity: 0.7; }
+}
+
+.js-bands .bands {
+    transition: 0 all linear;
+}
+
+.band {
+  height: 500px;
+}
